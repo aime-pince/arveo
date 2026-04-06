@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arveo — Êtes-vous visible pour l'IA ?</title>
+<meta name="description" content="Arveo mesure la visibilité de votre marque auprès des agents IA. Obtenez votre ACRS (Agentic Commerce Readiness Score) gratuitement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-card: #161616;
+  --border: #222222;
+  --text: #f5f5f5;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --gradient-accent: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Layout ── */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 120px 0;
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+nav.scrolled { border-bottom-color: var(--border); }
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 80px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; max-width: 720px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-hover);
+  margin-bottom: 32px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+h1 .gradient {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 2vw, 20px);
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--gradient-accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 0 0 var(--accent-glow);
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+
+.cta-primary svg {
+  width: 18px; height: 18px;
+  transition: transform 0.2s;
+}
+
+.cta-primary:hover svg { transform: translateX(3px); }
+
+/* ── Section Headers ── */
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.section-header { margin-bottom: 64px; }
+
+/* ── Problem Section ── */
+.problem { background: var(--bg); }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.problem-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.problem-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+}
+
+.problem-icon {
+  width: 48px; height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-glow);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.problem-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.problem-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.stat-highlight {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  color: #f87171;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ── ACRS Section ── */
+.acrs { background: var(--bg-elevated); }
+
+.acrs-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.score-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-ring {
+  width: 260px;
+  height: 260px;
+  position: relative;
+}
+
+.score-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.score-ring .track {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 8;
+}
+
+.score-ring .progress {
+  fill: none;
+  stroke: url(#acrs-gradient);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 753;
+  stroke-dashoffset: 301;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.score-value {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.score-number {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: -3px;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.score-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.criteria-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.criterion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.2s;
+}
+
+.criterion:hover { border-color: rgba(99, 102, 241, 0.4); }
+
+.criterion-dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.acrs-cta {
+  margin-top: 32px;
+  padding: 14px 28px;
+  background: var(--gradient-accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.acrs-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+
+/* ── Steps Section ── */
+.steps { background: var(--bg); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+}
+
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+}
+
+.step {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  width: 48px; height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.step h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.step-tag {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 12px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-hover);
+}
+
+/* ── About Section ── */
+.about {
+  background: var(--bg-elevated);
+  text-align: center;
+}
+
+.about-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.about-text {
+  font-size: 19px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+
+.about-values {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.about-value {
+  text-align: center;
+}
+
+.about-value-icon {
+  width: 56px; height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-glow);
+  border-radius: 14px;
+  margin: 0 auto 12px;
+  font-size: 24px;
+}
+
+.about-value span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ── CTA Banner ── */
+.cta-banner {
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-banner .section-title { margin-bottom: 16px; }
+.cta-banner .section-desc {
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-left {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--text); }
+
+/* ── Animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  section { padding: 80px 0; }
+
+  .acrs-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .score-visual { order: -1; }
+
+  .steps-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 24px;
+  }
+
+  .steps-grid::before { display: none; }
+}
+
+@media (max-width: 600px) {
+  section { padding: 64px 0; }
+  .container { padding: 0 20px; }
+
+  .problem-grid { grid-template-columns: 1fr; }
+
+  .criteria-grid { grid-template-columns: 1fr; }
+
+  .steps-grid { grid-template-columns: 1fr; }
+
+  .about-values { gap: 32px; }
+
+  .score-ring { width: 200px; height: 200px; }
+  .score-number { font-size: 48px; }
+
+  footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="logo">arveo<span>.</span></a>
+    <a href="mailto:audit@arveo.eu" class="nav-cta">Audit gratuit →</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge reveal">Agentic Commerce · 2026</div>
+    <h1 class="reveal reveal-delay-1">Êtes-vous visible<br>pour <span class="gradient">l'IA</span> ?</h1>
+    <p class="hero-sub reveal reveal-delay-2">Les agents IA achètent pour vos clients. Arveo mesure si votre marque est prête.</p>
+    <a href="mailto:audit@arveo.eu" class="cta-primary reveal reveal-delay-3">
+      Testez votre score gratuitement
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── Problem ── -->
+<section class="problem">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Le problème</div>
+      <h2 class="section-title">Vos clients délèguent leurs achats à l'IA</h2>
+      <p class="section-desc">Et si votre marque n'apparaît pas dans les réponses, vous perdez des ventes — sans même le savoir.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">🤖</div>
+        <h3>Les agents IA recommandent et achètent</h3>
+        <p>En 2026, ChatGPT, Claude, Gemini et d'autres agents IA conseillent les consommateurs et passent des commandes en leur nom. Un nouveau canal de vente émerge — sans vitrine.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">👻</div>
+        <h3>Invisible = inexistant</h3>
+        <p>Si votre marque n'est pas structurée pour être lue par les agents, elle n'existe tout simplement pas dans leurs recommandations. Pas de visibilité, pas de vente.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">📉</div>
+        <h3>La majorité des marques ne sont pas prêtes</h3>
+        <p>Nos audits montrent que la plupart des e-commerçants sont mal préparés à ce shift.</p>
+        <div class="stat-highlight">68 % des marques e-commerce FR scorent &lt; 40/100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACRS ── -->
+<section class="acrs">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Le produit</div>
+      <h2 class="section-title">L'ACRS — votre score de visibilité IA</h2>
+      <p class="section-desc">L'Agentic Commerce Readiness Score évalue votre marque sur 10 critères clés. Un score de 0 à 100, livré en 24 heures.</p>
+    </div>
+    <div class="acrs-layout">
+      <div class="score-visual reveal">
+        <div class="score-ring">
+          <svg viewBox="0 0 260 260">
+            <defs>
+              <linearGradient id="acrs-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+            <circle class="track" cx="130" cy="130" r="120"/>
+            <circle class="progress" cx="130" cy="130" r="120"/>
+          </svg>
+          <div class="score-value">
+            <div class="score-number">60</div>
+            <div class="score-label">Score ACRS</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="criteria-grid">
+          <div class="criterion reveal"><span class="criterion-dot"></span>Présence LLM</div>
+          <div class="criterion reveal reveal-delay-1"><span class="criterion-dot"></span>Données structurées</div>
+          <div class="criterion reveal"><span class="criterion-dot"></span>Prix accessibles</div>
+          <div class="criterion reveal reveal-delay-1"><span class="criterion-dot"></span>API / Interface machine</div>
+          <div class="criterion reveal"><span class="criterion-dot"></span>Politiques claires</div>
+          <div class="criterion reveal reveal-delay-1"><span class="criterion-dot"></span>Checkout agent-compatible</div>
+          <div class="criterion reveal"><span class="criterion-dot"></span>Avis accessibles</div>
+          <div class="criterion reveal reveal-delay-1"><span class="criterion-dot"></span>Signaux de stock</div>
+          <div class="criterion reveal"><span class="criterion-dot"></span>Cohérence multi-canal</div>
+          <div class="criterion reveal reveal-delay-1"><span class="criterion-dot"></span>Contenu AI-spécifique</div>
+        </div>
+        <a href="mailto:audit@arveo.eu" class="acrs-cta reveal">Votre score gratuit en 24h →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Steps ── -->
+<section class="steps">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-label">Comment ça marche</div>
+      <h2 class="section-title">Du diagnostic à l'action,<br>en 4 étapes</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-number">1</div>
+        <h3>Envoyez votre URL</h3>
+        <p>Un simple email avec l'adresse de votre site suffit pour lancer l'audit.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-number">2</div>
+        <h3>Audit automatisé</h3>
+        <p>Notre IA analyse votre site sur les 10 critères de l'ACRS.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-number">3</div>
+        <h3>Score + 3 actions</h3>
+        <p>Recevez votre score et les 3 actions prioritaires pour progresser.</p>
+        <div class="step-tag">Gratuit</div>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-number">4</div>
+        <h3>Audit complet</h3>
+        <p>Rapport détaillé + plan d'action personnalisé pour maximiser votre visibilité IA.</p>
+        <div class="step-tag">€2 500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section class="about">
+  <div class="container">
+    <div class="about-content">
+      <div class="section-label reveal">Qui sommes-nous</div>
+      <h2 class="section-title reveal">Préparer les marques<br>à l'ère des agents IA</h2>
+      <p class="about-text reveal">Arveo combine expertise deep-tech et intelligence artificielle pour aider les marques européennes à rester visibles dans l'ère des agents IA.</p>
+      <div class="about-values reveal">
+        <div class="about-value">
+          <div class="about-value-icon">🔬</div>
+          <span>Deep-tech</span>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">🇪🇺</div>
+          <span>Europe-first</span>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">⚡</div>
+          <span>Résultats en 24h</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA Banner ── -->
+<section class="cta-banner">
+  <div class="container" style="position:relative">
+    <div class="section-label reveal">Prêt à savoir ?</div>
+    <h2 class="section-title reveal">Votre marque est-elle visible<br>pour les agents IA ?</h2>
+    <p class="section-desc reveal">Obtenez votre ACRS gratuitement. Un email, un score, les priorités d'action.</p>
+    <a href="mailto:audit@arveo.eu" class="cta-primary reveal">
+      Testez votre score gratuitement
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <div class="footer-left">© 2026 Arveo</div>
+    <div class="footer-links">
+      <a href="https://arveo.eu">arveo.eu</a>
+      <a href="mailto:audit@arveo.eu">audit@arveo.eu</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Scroll reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Nav scroll effect ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+</script>
+
+</body>
+</html>
