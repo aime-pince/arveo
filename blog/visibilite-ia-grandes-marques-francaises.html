@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visibilité IA : pourquoi les grandes marques françaises sont encore loin d'être prêtes — Arveo</title>
+<meta name="description" content="Arveo a audité 5 grandes marques françaises sur leur visibilité IA. Aucune n'est encore prête. Voici ce que ça révèle du marché — et pourquoi la fenêtre d'avance est ouverte maintenant.">
+<meta property="og:title" content="Visibilité IA : pourquoi les grandes marques françaises sont encore loin d'être prêtes">
+<meta property="og:description" content="Benchmark Arveo de 5 grandes marques françaises sur la visibilité IA. La meilleure obtient 55/100. Le vrai message n'est pas le classement.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arveo.eu/blog/visibilite-ia-grandes-marques-francaises.html">
+<link rel="canonical" href="https://arveo.eu/blog/visibilite-ia-grandes-marques-francaises.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-card: #161616;
+  --border: #222222;
+  --text: #f5f5f5;
+  --text-secondary: #a0a0a0;
+  --text-muted: #888888;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --gradient-accent: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent-hover); text-decoration: none; }
+a:hover { color: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Nav */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+nav .container {
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-link { color: var(--text-secondary); font-size: 14px; }
+.nav-link:hover { color: var(--text); }
+.nav-cta {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); color: #fff; }
+
+/* Article header */
+.article-header {
+  padding: 64px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: var(--accent-glow);
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+.article-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+.article-meta span:not(:last-child)::after {
+  content: '·';
+  margin-left: 16px;
+  color: var(--border);
+}
+
+/* Article body */
+.article-body {
+  padding-bottom: 80px;
+  font-size: 17px;
+  color: var(--text-secondary);
+}
+.article-body p {
+  margin-bottom: 24px;
+}
+.article-body strong, .article-body b {
+  color: var(--text);
+  font-weight: 600;
+}
+.article-body em { color: var(--text); }
+.article-body h2 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: var(--text);
+  margin: 64px 0 20px;
+  line-height: 1.25;
+}
+.article-body h3 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  color: var(--text);
+  margin: 48px 0 16px;
+  line-height: 1.3;
+}
+.article-body ul, .article-body ol {
+  margin: 0 0 24px 24px;
+}
+.article-body li { margin-bottom: 8px; }
+.article-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 56px 0;
+}
+.article-body blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 4px 0 4px 24px;
+  margin: 32px 0;
+  color: var(--text);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+/* Table */
+.benchmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.benchmark-table th, .benchmark-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.benchmark-table th {
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.benchmark-table tr:last-child td { border-bottom: none; }
+.benchmark-table .score {
+  text-align: right;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* CTA */
+.cta-card {
+  margin-top: 64px;
+  padding: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-align: center;
+}
+.cta-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px !important;
+  color: var(--text);
+}
+.cta-card p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--gradient-accent);
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cta-button:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.back-link:hover { color: var(--text); }
+
+/* Footer */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+footer .container { max-width: 1120px; }
+footer a { color: var(--text-muted); margin: 0 12px; }
+footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .article-header { padding: 40px 0 24px; }
+  .article-body { font-size: 16px; }
+  .article-body h2 { font-size: 24px; margin: 48px 0 16px; }
+  .article-body h3 { font-size: 20px; margin: 36px 0 14px; }
+  .nav-links .nav-link { display: none; }
+  .cta-card { padding: 28px 24px; }
+  .benchmark-table { font-size: 13px; }
+  .benchmark-table th, .benchmark-table td { padding: 12px 14px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="../" class="logo">arveo<span>.</span></a>
+    <div class="nav-links">
+      <a href="../blog.html" class="nav-link">Blog</a>
+      <a href="../#audit" class="nav-cta">Audit gratuit →</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="container">
+    <a href="../blog.html" class="back-link">← Retour au blog</a>
+    <div class="eyebrow">Benchmark</div>
+    <h1>Visibilité IA : pourquoi les grandes marques françaises sont encore loin d'être prêtes</h1>
+    <div class="article-meta">
+      <span>Publié le 7 avril 2026</span>
+      <span>10 min de lecture</span>
+      <span>Par Arveo</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+  <div class="container">
+
+    <p>Pendant quinze ans, les marques ont optimisé leur visibilité pour Google.</p>
+
+    <p>Le nouveau sujet n'est pas Google. Le nouveau sujet, c'est la capacité d'une marque à être <strong>comprise, comparée et recommandée</strong> par les agents IA : ChatGPT, Claude, Gemini, Perplexity — et demain, les agents d'achat qui agiront directement dans les parcours e-commerce.</p>
+
+    <p>Autrement dit : la question n'est plus seulement <strong>« est-ce qu'on me trouve ? »</strong></p>
+
+    <p>C'est désormais aussi : <strong>« est-ce qu'une IA peut me lire assez bien pour me recommander ? »</strong></p>
+
+    <p>C'est ce que nous appelons chez Arveo la <strong>visibilité IA</strong>.</p>
+
+    <p>Pour prendre le pouls du marché, nous avons audité 5 grandes marques françaises issues de secteurs différents : <strong>Sézane, Le Slip Français, Decathlon, Fnac et Maisons du Monde</strong>.</p>
+
+    <p>Le résultat est sans appel : <strong>aucune n'est aujourd'hui réellement prête</strong>.</p>
+
+    <p>La meilleure marque du panel obtient <strong>55/100</strong>. Les autres tombent rapidement dès qu'on passe de la notoriété de marque à la lisibilité réelle par une machine.</p>
+
+    <h2>Ce que mesure Arveo</h2>
+
+    <p>Chez Arveo, nous évaluons la visibilité IA d'une marque à partir d'un principe simple :</p>
+
+    <blockquote>une marque visible n'est pas seulement une marque connue,<br>c'est une marque qu'un agent peut <strong>identifier, interpréter et exploiter</strong> dans un contexte de recommandation ou de comparaison.</blockquote>
+
+    <p>Notre lecture combine trois familles de signaux :</p>
+    <ul>
+      <li><strong>présence de marque</strong> dans les grands modèles,</li>
+      <li><strong>lisibilité du site et du catalogue</strong>,</li>
+      <li><strong>qualité d'exposition des données commerciales</strong> utiles à une IA.</li>
+    </ul>
+
+    <p>L'objectif n'est pas de juger un site comme un développeur, ni comme un SEO classique.</p>
+
+    <p>L'objectif est de répondre à une question plus stratégique :</p>
+
+    <p><strong>si un agent IA devait recommander votre marque demain, aurait-il assez de matière fiable pour le faire ?</strong></p>
+
+    <h2>Benchmark — 5 grandes marques françaises</h2>
+
+    <table class="benchmark-table">
+      <thead>
+        <tr>
+          <th>Marque</th>
+          <th class="score">Score</th>
+          <th>Lecture rapide</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Le Slip Français</strong></td>
+          <td class="score">55/100</td>
+          <td>La plus lisible du panel, mais encore loin d'un standard vraiment agent-ready</td>
+        </tr>
+        <tr>
+          <td><strong>Decathlon</strong></td>
+          <td class="score">50/100</td>
+          <td>Une machine e-commerce puissante, mais insuffisamment exposée aux agents</td>
+        </tr>
+        <tr>
+          <td><strong>Fnac</strong></td>
+          <td class="score">43/100</td>
+          <td>Forte notoriété, lisibilité IA encore trop incertaine</td>
+        </tr>
+        <tr>
+          <td><strong>Sézane</strong></td>
+          <td class="score">26/100</td>
+          <td>Marque forte, accessibilité machine très faible</td>
+        </tr>
+        <tr>
+          <td><strong>Maisons du Monde</strong></td>
+          <td class="score">25/100</td>
+          <td>Présence retail forte, visibilité IA faible</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Le vrai message n'est pas le classement.</p>
+
+    <p>Le vrai message, c'est que <strong>même les marques les plus installées ne sont pas encore structurées pour ce nouveau canal</strong>.</p>
+
+    <h2>Trois enseignements majeurs</h2>
+
+    <h3>1. La notoriété ne suffit plus</h3>
+
+    <p>Une marque peut être très connue, très désirée, très bien positionnée dans l'esprit des consommateurs — et pourtant être mal équipée pour les agents IA.</p>
+
+    <p>Pourquoi ?</p>
+
+    <p>Parce que les agents n'achètent pas une image de marque. Ils consomment des <strong>signaux exploitables</strong> : structure, cohérence, accessibilité, clarté, données, comparabilité.</p>
+
+    <p>C'est l'un des changements les plus importants du moment :</p>
+
+    <p><strong>être connu ne veut pas dire être recommandable.</strong></p>
+
+    <p>Et pour beaucoup de directions e-commerce, ce glissement n'est pas encore intégré.</p>
+
+    <h3>2. Le principal problème n'est pas le contenu — c'est la lisibilité</h3>
+
+    <p>Le benchmark ne montre pas un manque de storytelling.</p>
+
+    <p>Il montre surtout un problème plus fondamental : <strong>beaucoup de grandes marques sont encore difficiles à lire pour une machine</strong>.</p>
+
+    <p>Autrement dit, le sujet n'est pas seulement « créer plus de contenu pour l'IA ».</p>
+
+    <p>Le sujet est d'abord :</p>
+    <ul>
+      <li>rendre les signaux utiles plus faciles à interpréter,</li>
+      <li>éviter les couches qui brouillent la lecture,</li>
+      <li>faire en sorte que les agents aient accès à une représentation cohérente de la marque et de son offre.</li>
+    </ul>
+
+    <p>C'est un sujet de distribution numérique, pas juste un sujet de communication.</p>
+
+    <h3>3. La visibilité IA est en train de devenir un avantage compétitif mesurable</h3>
+
+    <p>Le marché est encore tôt.</p>
+
+    <p>Aucune des 5 marques auditées ne montre aujourd'hui une stratégie mature de visibilité IA. Cela veut dire une chose très simple :</p>
+
+    <p><strong>la fenêtre d'avance est ouverte maintenant.</strong></p>
+
+    <p>Dans un marché plus mûr, tout le monde finira par optimiser ces signaux. Aujourd'hui, ce n'est pas encore le cas.</p>
+
+    <p>Les marques qui commencent tôt peuvent prendre une avance disproportionnée sur trois fronts :</p>
+    <ul>
+      <li>la fréquence de citation,</li>
+      <li>la qualité de recommandation,</li>
+      <li>la présence dans les comparaisons générées par IA.</li>
+    </ul>
+
+    <p>C'est exactement la mécanique qu'on a connue en SEO, à un stade beaucoup plus précoce.</p>
+
+    <h2>Ce que les directions e-commerce devraient retenir</h2>
+
+    <h3>La visibilité IA n'est pas un sous-sujet du SEO</h3>
+
+    <p>Elle croise le SEO, le contenu, la structure produit, la gouvernance du catalogue, l'architecture web et la manière dont une marque expose son information.</p>
+
+    <p>Mais ce n'est pas juste « du SEO avec un nouveau nom ».</p>
+
+    <p>C'est un nouveau champ de bataille, parce que la couche d'intermédiation change.</p>
+
+    <p>Avant, l'utilisateur cherchait et comparait lui-même.<br>
+    Demain, une partie croissante de cette comparaison sera faite <strong>par délégation</strong>.</p>
+
+    <p>Et dans un monde de délégation, les marques les plus visibles ne seront pas forcément les plus belles — mais souvent les plus <strong>lisibles</strong>.</p>
+
+    <h3>Le sujet est déjà assez mûr pour être mesuré</h3>
+
+    <p>Il est encore tôt, oui. Mais il n'est plus trop tôt.</p>
+
+    <p>On peut déjà évaluer :</p>
+    <ul>
+      <li>la manière dont une marque apparaît dans les modèles,</li>
+      <li>sa capacité à être comparée,</li>
+      <li>les zones d'opacité qui freinent sa recommandation,</li>
+      <li>et les quick wins qui augmentent sa visibilité IA.</li>
+    </ul>
+
+    <p>Autrement dit : ce n'est plus un sujet de veille abstraite. C'est un sujet d'<strong>audit, de priorisation et d'exécution</strong>.</p>
+
+    <h2>Pourquoi ce sujet va monter vite</h2>
+
+    <p>Parce que les comportements changent déjà.</p>
+
+    <p>Un consommateur qui demandait hier :</p>
+    <ul>
+      <li>« quel matelas choisir ? »</li>
+      <li>« quelle marque de cosmétique est la plus saine ? »</li>
+      <li>« quelle veste de pluie acheter en France ? »</li>
+    </ul>
+
+    <p>…commence de plus en plus à poser cette question à une IA.</p>
+
+    <p>Et quand une IA devient la première couche de tri, de synthèse et de comparaison, la marque qui n'est pas correctement représentée perd quelque chose de précieux :</p>
+
+    <p><strong>la chance même d'entrer dans la conversation.</strong></p>
+
+    <h2>La lecture Arveo</h2>
+
+    <p>Notre conviction est simple :</p>
+
+    <blockquote>le prochain avantage des marques e-commerce ne sera pas seulement d'être bien référencées, mais d'être <strong>bien interprétées</strong>.</blockquote>
+
+    <p>C'est pour cela que nous parlons de <strong>visibilité IA</strong> : une discipline à l'intersection de la marque, du contenu, de la structure du catalogue et de l'accessibilité des signaux commerciaux.</p>
+
+    <p>Le benchmark de ces 5 marques montre que le marché français est encore très tôt. Et c'est précisément ce qui rend le moment intéressant.</p>
+
+    <p>Les marques qui s'y mettent maintenant peuvent construire un avantage réel, avant que ce sujet ne devienne standard.</p>
+
+    <h2>Et maintenant ?</h2>
+
+    <p>La bonne question n'est probablement pas :</p>
+
+    <p><strong>« faut-il s'occuper de visibilité IA ? »</strong></p>
+
+    <p>La bonne question est plutôt :</p>
+
+    <p><strong>« à quel point sommes-nous déjà en retard — sans le mesurer ? »</strong></p>
+
+    <p>C'est exactement le rôle d'un audit Arveo :</p>
+    <ul>
+      <li>mesurer votre visibilité IA actuelle,</li>
+      <li>identifier les angles morts,</li>
+      <li>prioriser les quick wins,</li>
+      <li>et transformer un sujet flou en plan d'action concret.</li>
+    </ul>
+
+    <div class="cta-card">
+      <h3>Votre marque est-elle visible pour l'IA ?</h3>
+      <p>Demandez votre audit Arveo gratuit. Un score, les angles morts, les premières actions à mener.</p>
+      <a href="../#audit" class="cta-button">
+        Demander mon audit
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Arveo · <a href="../">arveo.eu</a> · <a href="../blog.html">Blog</a> · <a href="../#audit">Audit gratuit</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
